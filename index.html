@@ -435,6 +435,23 @@
   @media (max-width: 480px) {
     #calc-root h1 { font-size: 24px; }
     #calc-root section.card { padding: 16px; }
+    #calc-root .masthead-row {
+      flex-wrap: wrap;
+      row-gap: 12px;
+    }
+    #calc-root .masthead-text {
+      flex: 1 1 100%;
+      order: 2;
+    }
+    #calc-root .logo { order: 1; }
+    #calc-root .print-btn { order: 3; }
+    #calc-root .lang-switch { order: 4; }
+    #calc-root .print-btn,
+    #calc-root .lang-switch {
+      flex: 0 0 auto;
+      font-size: 12px;
+      padding: 8px 12px;
+    }
   }
 </style>
 </head>
@@ -867,6 +884,17 @@
   // sync logo into laudo header
   $('laudo-logo').src = $('logo-img').src;
 
+  // médico / CRM / RQE: lembrados entre pacientes, editáveis a qualquer momento
+  ['p_medico','p_crm','p_rqe'].forEach(id => {
+    try {
+      const saved = localStorage.getItem('calc_' + id);
+      if (saved) $(id).value = saved;
+    } catch(e) {}
+    $(id).addEventListener('input', () => {
+      try { localStorage.setItem('calc_' + id, $(id).value); } catch(e) {}
+    });
+  });
+
   function badgeText(el){
     const b = el.querySelector('.badge');
     return b ? b.textContent : '—';
@@ -927,7 +955,7 @@
     $('laudo-view').style.display = 'none';
     $('form-view').style.display = 'block';
 
-    ['p_nome','p_medico','p_crm','p_rqe','p_idade','p_altura','p_peso',
+    ['p_nome','p_idade','p_altura','p_peso',
      'p_glicose','p_insulina','p_alb_urin','p_creat_urin','p_creat','p_cist','p_obs']
       .forEach(id => { $(id).value = ''; });
 
