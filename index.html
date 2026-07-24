@@ -94,6 +94,20 @@
     cursor: pointer;
   }
   #calc-root .print-btn:hover { background: var(--teal); }
+  #calc-root .lang-switch {
+    flex-shrink: 0;
+    font-family: var(--mono);
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 0.04em;
+    color: var(--teal-deep);
+    background: #fff;
+    border: 1px solid var(--teal-deep);
+    border-radius: 5px;
+    padding: 9px 12px;
+    text-decoration: none;
+  }
+  #calc-root .lang-switch:hover { background: var(--good-bg); }
 
   #laudo-view { display: none; }
 
@@ -438,6 +452,7 @@
           <p>IMC · BSA · HOMA-IR / HOMA-Beta · RAC · TFG (CKD-EPI 2021) — a partir dos dados do paciente</p>
         </div>
         <button id="btn-print" class="print-btn" onclick="gerarLaudo()">Gerar laudo (A4)</button>
+        <a href="calculadora_homa_en.html" class="lang-switch no-print" title="Switch to English">EN</a>
       </div>
     </div>
 
