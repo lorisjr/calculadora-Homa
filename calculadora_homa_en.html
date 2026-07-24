@@ -242,11 +242,13 @@
     #laudo-view .no-print { display: none; }
     body #calc-root #form-view { display: none !important; }
     #calc-root { padding: 0; background: #fff; }
+    html, body { width: 210mm; }
     #calc-root .laudo-page {
-      width: auto;
+      width: 186mm;
+      max-width: 186mm;
       min-height: 0;
       box-shadow: none;
-      margin: 0;
+      margin: 0 auto;
       padding: 0;
       page-break-after: avoid;
       page-break-inside: avoid;
